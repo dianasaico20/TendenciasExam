@@ -26,29 +26,29 @@ public class ProductoController {
 	 @Autowired
 		private IProductoService productoService;
 		
-		@GetMapping("/listarClientes")
+		@GetMapping("/listar")
 		public List<Producto> index(){
 			return productoService.findAll();
 		}
 		
-		@PostMapping("/guardarCliente")
+		@PostMapping("/guardar")
 		@ResponseStatus (HttpStatus.CREATED)
 		public Producto create(@RequestBody Producto producto){
 			return productoService.save(producto);
 		}
 		
-		@GetMapping("/buscarClientes/{id}")	
+		@GetMapping("/buscar/{id}")	
 		public Producto show(@PathVariable Integer id) {
 			return productoService.findById(id);
 		}
 		
-		@DeleteMapping("/eliminarCliente/{id}")
+		@DeleteMapping("/eliminar/{id}")
 		@ResponseStatus(HttpStatus.NO_CONTENT)
 		public void delete(@PathVariable Integer id) {
 			productoService.delete(id);
 		}
 		
-		@PutMapping("/editarCliente/{id}")
+		@PutMapping("/editar/{id}")
 		@ResponseStatus(HttpStatus.CREATED)
 		public Producto update(@RequestBody Producto producto, @PathVariable Integer id) {
 			Producto productoActual=productoService.findById(id);
